@@ -6,7 +6,6 @@ import { useState } from "react";
 import Star from "./components/starComponent/Star";
 
 function App() {
-  const fiveStars = 5;
   const [Movies, setmyMovie] = useState(myMovies);
   const [inputSearch, setInputSearch] = useState("");
   const [starSearch, setStarSearch] = useState(null);
@@ -14,9 +13,7 @@ function App() {
     <div className="App">
       <header>
         <input type="text" onChange={(e) => setInputSearch(e.target.value)} />
-        {[...Array(fiveStars)].map((e, i) => (
-          <Star key={i} setStarSearch={setStarSearch} i={i} />
-        ))}
+        <Star rating={starSearch} setStarSearch={setStarSearch} />
       </header>
       {}
       <MovieList

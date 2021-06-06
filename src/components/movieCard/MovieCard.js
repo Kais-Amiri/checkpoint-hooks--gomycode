@@ -13,9 +13,7 @@ function MovieCard({ movie: { image, rating, name, date, description } }) {
           </Card.Title>
           <Card.Text>{description}</Card.Text>
           <div style={{ display: "flex" }}>
-            {[...Array(rating)].map((e, i) => (
-              <Star key={i.toString()} />
-            ))}
+            <Star rating={rating} />
           </div>
         </Card.Body>
       </Card>

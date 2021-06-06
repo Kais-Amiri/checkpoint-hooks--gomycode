@@ -40,16 +40,6 @@ function MovieList(props) {
         justifyContent: "space-around",
       }}
     >
-      {props.starSearch !== null
-        ? props.myMovies.filter((el) => {
-            if (el.rating === props.starSearch) return el;
-          })
-        : props.myMovies
-            .filter((el) =>
-              el.name.toLowerCase().includes(props.inputSearch.toLowerCase())
-            )
-            .map((movie) => <MovieCard key={movie.id} movie={movie} />)}
-
       <div>
         <Button variant="primary" onClick={handleShow}>
           +
@@ -118,6 +108,17 @@ function MovieList(props) {
           </Modal.Footer>
         </Modal>
       </div>
+      {props.myMovies
+        .filter(
+          (el) =>
+            el.name
+              .toLowerCase()
+              .includes(props.inputSearch.toLowerCase().trim()) &&
+            el.rating >= props.starSearch
+        )
+        .map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
     </div>
   );
 }
